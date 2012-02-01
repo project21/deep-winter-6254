@@ -1,0 +1,36 @@
+<h1>Token#new</h1>
+<p>Find me in app/views/token/new.html.erb</p>
+
+<%= form_for @token ,:url=>{:controller=>"token",:action =>"create"} do |f| %>
+ quantity<%= f.text_field :buck %>
+<%= f.hidden_field :stripe_card_token %>
+  <div class="field">
+    <%= f.hidden_field :product_id,:value=>"1" %>
+    <%if user_signed_in? %>
+    <%= f.hidden_field :user_id,:value=>current_user.id %>
+    <%end%>
+  </div>  
+
+  <% if @token.stripe_card_token.present? %>
+  Credit card has been provided.
+  <% else %>
+  <div class="field">
+      <%= label_tag :card_number, "Credit Card Number " %>
+      <%= text_field_tag :card_number, nil, name: nil %>
+  </div>
+  <div class="field">
+      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+      <%= text_field_tag :card_code, nil, name: nil %>
+  </div>
+  <div class="field">
+    <%= label_tag :card_month, "Card Expiration" %>
+    <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
+  </div>
+  <%end%>
+  <div id="stripe_error">
+  <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+</div>
+  <div class="actions"><%= f.submit "Submit" %></div>
+<% end %>
+

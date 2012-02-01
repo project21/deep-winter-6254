@@ -1,0 +1,101 @@
+<h1 class="test">Buy token</h1>
+<p>
+ <% if @product.price = 1 %>
+<%=@product.name%>
+<%=@product.price%>
+<b>Condition:</b>New
+<%=@product.description%>
+<%=@product.features%>
+
+ </p>
+ <p>
+  <%= form_for @token ,:url=>{:controller=>"token",:action =>"create"} do |f| %>
+  quantity<%= f.text_field :buck %>
+  <%= f.hidden_field :stripe_card_token %>
+  <div class="field">
+    <%= f.hidden_field :product_id,:value=>@product.id %>
+    <%if user_signed_in? %>
+    <%= f.hidden_field :user_id,:value=>current_user.id %>
+    <%end%>
+  </div>  
+    
+  <% if @token.stripe_card_token.present? %>
+  Credit card has been provided.
+  <% else %>
+  <div class="field">
+      <%= label_tag :name, "Name on the card " %>
+      <%= text_field_tag :name, nil, name: nil %>
+  </div>
+  <div class="field">
+      <%= label_tag :card_number, "Credit Card Number " %>
+      <%= text_field_tag :card_number, nil, name: nil %>
+  </div>
+
+  <div class="field">
+      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+      <%= text_field_tag :card_code, nil, name: nil %>
+  </div>
+  <div class="field">
+    <%= label_tag :card_month, "Card Expiration" %>
+    <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
+  </div>
+  <%end%>
+  <div id="stripe_error">
+  <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
+  <div class="actions"><%= f.submit "Submit" %></div>
+  <% end %>
+
+<%elsif @product.price > @my_credits %>
+   <%=@product.name%>
+   <%=@product.price%>
+   <b>Condition:</b>New
+   <%=@product.description%>
+   <%=@product.features%>
+      <%= form_for @token ,:url=>{:controller=>"token",:action =>"create"} do |f| %>
+  quantity<%= f.text_field :buck %>
+  <%= f.hidden_field :stripe_card_token %>
+  <div class="field">
+    <%= f.hidden_field :product_id,:value=>@product.id %>
+    <%if user_signed_in? %>
+    <%= f.hidden_field :user_id,:value=>current_user.id %>
+    <%end%>
+  </div>  
+    
+  <% if @token.stripe_card_token.present? %>
+  Credit card has been provided.
+  <% else %>
+  <div class="field">
+      <%= label_tag :name, "Name on the card " %>
+      <%= text_field_tag :name, nil, name: nil %>
+  </div>
+  <div class="field">
+      <%= label_tag :card_number, "Credit Card Number " %>
+      <%= text_field_tag :card_number, nil, name: nil %>
+  </div>
+
+  <div class="field">
+      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+      <%= text_field_tag :card_code, nil, name: nil %>
+  </div>
+  <div class="field">
+    <%= label_tag :card_month, "Card Expiration" %>
+    <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
+  </div>
+  <%end%>
+  <div id="stripe_error">
+  <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
+  <div class="actions"><%= f.submit "Submit" %></div>
+  <% end %>
+<%else%>
+    <%=@product.name%>
+   <%=@product.price%>
+   <b>Condition:</b>New
+   <%=@product.description%>
+   <%=@product.features%>
+    Buy
+<%end%>
+</p>

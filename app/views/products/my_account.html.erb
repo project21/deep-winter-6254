@@ -1,0 +1,42 @@
+<p>
+$<%=@my_credits%>credits
+Want to use your credits?<%=link_to "Buy Now",:controller=>"products",:action=>"buy_now"%>
+My  Games<br>
+<%unless @my_games.empty?%>
+<% @my_games.each do |game| %>
+<% if game.product.active %>
+   <%=game.product.name %><br>
+    <%=image_tag (game.product.image_url.to_s )%><br>
+   <%=game.product.price %><br>
+   <%=game.product.description %><br>
+   <%=game.unique_token %><br>
+   <%=game.product.minimum_price-game.product.tokens.count %> tokens has to be purchaed for the game to start<br>
+   <%end%>
+   <%end%>
+   Currently you are not participating in any game  <br>
+ <%end%> 
+ 
+
+
+previously participated lottery<br>
+
+<%unless @my_games.empty?%>
+
+  <% @my_games.each do |game| %>
+   
+   <% unless @id_value==game.product.id%>
+         <% unless game.product.active %> 
+         <%@id_value=game.product.id%>
+          <%=game.product.name %>
+         <%=image_tag (game.product.image_url.to_s )%><br>
+         <%=game.product.price %><br>
+         <%=game.product.description %><br>
+         winner is <%=game.product.winner%><br>
+         <%end%>
+    <%end%>
+    <%end%>
+<%else%>
+   You dont have any previous Games
+
+<%end%>
+</p>

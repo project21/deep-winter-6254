@@ -1,0 +1,11 @@
+<h1>All Products</h1>
+<p>
+<%@products.each do |product|%>
+  <a href="/products/<%=product.id%>"><%=product.name%></a><br>
+   <%=image_tag (product.image_url.to_s )%><br>
+  <%=product.price%><br>
+   <b>condition:</b>new <br>
+  <%=product.minimum_price-product.tokens.count %> to be purchased
+  <%end%>
+
+</p>

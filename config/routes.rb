@@ -1,4 +1,19 @@
 Buckpile::Application.routes.draw do
+  get "token/new"
+  post "token/create"
+  get "products/sold"
+  get "products/all_new"
+  get "products/my_account"
+  get "products/buy_now"
+  devise_for :users
+  resources :products 
+  resources :tokens
+  resources :products do
+  resources :tokens 
+  end 
+  #match '/users/sign_in' => "devise/products#my_account"
+ # match '/product.id' => "products#show", :via=> :get
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +63,7 @@ Buckpile::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'products#index'
 
   # See how all your routes lay out with "rake routes"
 

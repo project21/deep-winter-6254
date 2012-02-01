@@ -1,0 +1,11 @@
+<h1>Recently sold Products</h1>
+<p>
+<%@sold.each do |product|%>
+  <%=product.name%><br>
+   <%=image_tag (product.image_url.to_s )%><br>
+  <%=product.price%><br>
+  won by <%=product.winner %>
+  
+  <%end%>
+
+</p>
