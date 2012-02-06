@@ -1,0 +1,7 @@
+<%@products.each do |product|%>
+  <a href="/products/<%=product.id%>"><%=product.name%></a><br>
+   <%=image_tag (product.image_url.to_s )%><br>
+  <%=product.price%><br>
+   <b>condition:</b>new <br>
+ 
+  <%end%>

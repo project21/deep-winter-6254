@@ -1,16 +1,29 @@
 Buckpile::Application.routes.draw do
+ 
+
   get "token/new"
   post "token/create"
+  post "token/pay"
   get "products/sold"
   get "products/all_new"
   get "products/my_account"
   get "products/buy_now"
+  get "products/shipping_address"
+  put "products/update_address"
+  post "products/skip"
+  post "products/direct_to_update_address"
+  post "products/basic_info"
+  put "products/update_basic_info"
+  get "products/invite_people"
   devise_for :users
   resources :products 
   resources :tokens
   resources :products do
   resources :tokens 
   end 
+
+  
+  
   #match '/users/sign_in' => "devise/products#my_account"
  # match '/product.id' => "products#show", :via=> :get
 

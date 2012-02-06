@@ -51,3 +51,19 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
 end
+
+module CarrierWave
+  module Storage
+    class Fog < Abstract
+      class File
+        def public_url
+          if host = @uploader.fog_host
+            "#{host}/#{path}"
+          else
+            "https://s3.amazonaws.com/#{@uploader.fog_directory}/#{path}"
+          end
+        end
+      end
+    end
+  end
+end

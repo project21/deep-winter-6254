@@ -1,12 +1,18 @@
-<h1 class="test">Buy token</h1>
+<h1 >Buy token</h1>
+<% if flash[:notice]%>
+  <div class="note"> <%=flash[:notice]%></div>
+     <%end%>
 <p>
- <% if @product.price = 1 %>
+ <% if @product.price == 1 %>
 <%=@product.name%>
 <%=@product.price%>
 <b>Condition:</b>New
 <%=@product.description%>
 <%=@product.features%>
+<%=@product.minimum_price - @product.tokens.count %>tokens to be purchased
 
+<div  class="test ui-helper-hidden"><%=render 'invite_friend'%></div>
+     <div id="test2">Invite A Friend</div>
  </p>
  <p>
   <%= form_for @token ,:url=>{:controller=>"token",:action =>"create"} do |f| %>
@@ -41,20 +47,28 @@
     <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
   </div>
   <%end%>
+<div class="terms-check">
+   <%=render 'terms_check'%>
+  </div>
+  <%=check_box_tag 'accept'%>I accept
+  
   <div id="stripe_error">
   <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
+
   <div class="actions"><%= f.submit "Submit" %></div>
   <% end %>
 
-<%elsif @product.price > @my_credits %>
+<%elsif @product.price > @my_credits.to_f %>
+Pay the difference
    <%=@product.name%>
-   <%=@product.price%>
+    <%=@product.price%>
    <b>Condition:</b>New
    <%=@product.description%>
    <%=@product.features%>
-      <%= form_for @token ,:url=>{:controller=>"token",:action =>"create"} do |f| %>
-  quantity<%= f.text_field :buck %>
+
+      <%= form_for @token ,:url=>{:controller=>"token",:action =>"pay"} do |f| %>
+
   <%= f.hidden_field :stripe_card_token %>
   <div class="field">
     <%= f.hidden_field :product_id,:value=>@product.id %>
@@ -63,6 +77,11 @@
     <%end%>
   </div>  
     
+    <div class="field">
+     <%= label_tag :name, "Amount " %>
+      <%= f.text_field :buck, :value => @amount_difference %>
+  </div>
+
   <% if @token.stripe_card_token.present? %>
   Credit card has been provided.
   <% else %>

@@ -1,0 +1,6 @@
+<%=@product.name%>
+ <%= form_for @invite ,:url=>{:controller=>"products",:action =>"invite_people"} do |f| %>
+          To:Recepient Email <%= f.text_field :email_recepient %><br>
+           Message<%= f.text_area :message,:rows=>"3" %>
+           <%=f.submit "send"%>
+           <%end%>

@@ -1,0 +1,17 @@
+<p>
+Update Shipping Address<br>
+<%= form_for @user ,:url=>{:action =>"update_address"} do |f|%>
+<% if @user.errors.any?%>
+<% @user.errors.full_messages.each do |error| %>
+    <%= error %>
+  <% end %>
+<%end%>
+Address Line 1 <%=f.text_field :address %>
+ Address Line 2 <%=f.text_field :address2 %>
+City <%=f.text_field :city %>
+ State<%=f.text_field :state %>
+ Zipcode<%=f.text_field :zipcode %>
+ <%=f.submit "submit" %>
+<%end%>
+</p>
+<%=button_to "Ask me later",:controller=>"products",:action=>"skip"%>

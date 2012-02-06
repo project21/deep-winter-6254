@@ -1,0 +1,9 @@
+<% if flash[:notice]%>
+  <div class="note"> <%=flash[:notice]%></div>
+     <%end%>
+
+<%= form_tag  :url=>{:action =>"pass_create"}  do  %>
+  Password: <%= text_field_tag :password %>
+  <%= submit_tag "Login" %>
+<% end -%>
+

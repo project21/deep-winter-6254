@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120201054707) do
+ActiveRecord::Schema.define(:version => 20120206011555) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "price",            :default => 1.0
     t.string   "meta_keyword"
     t.text     "meta_description"
     t.datetime "created_at"
@@ -26,6 +25,9 @@ ActiveRecord::Schema.define(:version => 20120201054707) do
     t.boolean  "active",           :default => true
     t.integer  "minimum_price"
     t.text     "features"
+    t.decimal  "price"
+    t.string   "email_recepient"
+    t.text     "message"
   end
 
   create_table "tokens", :force => true do |t|
@@ -38,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20120201054707) do
     t.string   "stripe_customer_token"
     t.integer  "buck"
     t.string   "name"
+    t.boolean  "used",                  :default => false
   end
 
   create_table "users", :force => true do |t|
@@ -59,6 +62,8 @@ ActiveRecord::Schema.define(:version => 20120201054707) do
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
+    t.integer  "my_credit",                             :default => 0
+    t.string   "address2"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

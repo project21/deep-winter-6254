@@ -15,9 +15,10 @@ jQuery.ajaxSetup({
   }
 });
 $(document).ready(function() {
-
-$(".test").click(function(){alert('hey')});
-
+  $('#test2').click(function(){
+   $(".test").modal();
+   $('#test').removeClass('ui-helper-hidden');
+});
 (function() {
   var subscription;
   jQuery(function() {
@@ -50,8 +51,12 @@ $(".test").click(function(){alert('hey')});
       if (status === 200) {
           $('#token_stripe_card_token').val(response.id);
           var quantity= $('#token_buck').val();
+               if (quantity > 0 && ($('#accept').is(':checked')) ){
           $('#token_buck').val(quantity*100);
-        $('#new_token')[0].submit();
+        $('#new_token')[0].submit();}
+               else{$('#stripe_error').text("Please  accept the terms and condition before submitting. Quantity has to be atleast 1");
+                      $('input[type=submit]').attr('disabled', false);
+                   }
       } else {
         $('#stripe_error').text(response.error.message);
        $('input[type=submit]').attr('disabled', false);
@@ -59,6 +64,7 @@ $(".test").click(function(){alert('hey')});
     }
   };
 }).call(this);
+
 
 
 	});
