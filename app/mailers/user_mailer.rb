@@ -6,3 +6,4 @@ class UserMailer < ActionMailer::Base
     @url  = "http://example.com/login"
     mail(:to =>"davidm1921@yahoo.com", :subject => "Ecommerce Lottery Invitation")
   end
+end
