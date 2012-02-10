@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
    before_filter :authenticate_user!, :only=>:show
    before_filter :authenticate, :only=>:new
-  
+
   def index
     @products=Product.where("price=? AND active=?",1,true).order('created_at ASC').limit(30)
   end
@@ -62,11 +62,12 @@ end
 
 def invite_people
   @email=Product.new(:email_recepient=>params[:product][:email_recepient])
-  @email_recepient=@email.email_recepient.to_s
+ @email_recepient=@email.email_recepient.to_s
   @message=Product.new(:message=>params[:product][:message])
-  @@email_message=@message.message.to_s
-     @product=Product.find(params[:id])
-     UserMailer.invite(@product).deliver
+  @email_message=@message.message.to_s
+  @product=Product.find(session[:product_id])
+  UserMailer.invite(@product,@email_recepient,@email_message).deliver
+   redirect_to :back
 end
 
 def buy_now

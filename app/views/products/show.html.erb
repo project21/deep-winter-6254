@@ -1,22 +1,46 @@
-<h1 >Buy token</h1>
+
+<div class="view-container">
+<h2> Game ID:<%=@product.id%></h2>
 <% if flash[:notice]%>
   <div class="note"> <%=flash[:notice]%></div>
      <%end%>
 <p>
+<div class="view-item-box">
  <% if @product.price == 1 %>
-<%=@product.name%>
-<%=@product.price%>
-<b>Condition:</b>New
-<%=@product.description%>
-<%=@product.features%>
-<%=@product.minimum_price - @product.tokens.count %>tokens to be purchased
-
+<h3><%=@product.name%></h3>
+<span class="view-item-image"> <%=image_tag (@product.image_url.to_s )%></span><br>
+Buy tokens below and<br>
+Win it for $<%=number_with_precision(@product.price,:precision=>2)%><br>
+<%=@product.minimum_price - @product.tokens.count %> tokens to be purchased for the game to start
 <div  class="test ui-helper-hidden"><%=render 'invite_friend'%></div>
      <div id="test2">Invite A Friend</div>
+</div>
+<div class="view-description">
+<h3>Product Details</h3>
+<b>Retail Price:</b>$350<br>
+<b>Saving:</b>99% OFF<br>
+<b>Condition:</b>New<br>
+<b>Item Description:</b><%=@product.description%><br>
+<b>Features:</b><%=@product.features%><br>
+<b>Shipping:</b>FREE<br>
+<b>Return Policy:</b>If you dont win ,your money will be accredited back in your buckpile account as an online currency.Purchased Tokens wont be refunded <br>
+
+</div>
+   
  </p>
+<div class="clear"></div>
+
  <p>
+ <div class="line"></div>
+ <div style="float:left;background:#F0F2F5;
+ -moz-border-radius:6px;
+ -webkit-border-radius:6px;
+ border-radius:6px;padding-top:10px;padding-bottom:10px;">
+ <b>Buy atleast one token for $1.00 to be registered  in the game</b>
+ <div class="payment-form-line"></div>
+ <table id="pay-form" >
   <%= form_for @token ,:url=>{:controller=>"token",:action =>"create"} do |f| %>
-  quantity<%= f.text_field :buck %>
+ <tr><td> <label>quantity</label></td><td><%= f.text_field :buck ,:size=>"5"%></td></tr>
   <%= f.hidden_field :stripe_card_token %>
   <div class="field">
     <%= f.hidden_field :product_id,:value=>@product.id %>
@@ -29,36 +53,49 @@
   Credit card has been provided.
   <% else %>
   <div class="field">
-      <%= label_tag :name, "Name on the card " %>
-      <%= text_field_tag :name, nil, name: nil %>
+     <tr><td> <%= label_tag :name, "Name on the card " %></td>
+      <td><%= text_field_tag :name, nil, name: nil %></td></tr>
   </div>
   <div class="field">
-      <%= label_tag :card_number, "Credit Card Number " %>
-      <%= text_field_tag :card_number, nil, name: nil %>
+     <tr><td> <%= label_tag :card_number, "Credit Card Number " %></td>
+      <td><%= text_field_tag :card_number, nil, name: nil %></tr></td>
   </div>
 
   <div class="field">
-      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-      <%= text_field_tag :card_code, nil, name: nil %>
+     <tr><td> <%= label_tag :card_code, "Security Code on Card (CVV)" %></td>
+      <td><%= text_field_tag :card_code, nil, name: nil %></tr></td>
   </div>
   <div class="field">
-    <%= label_tag :card_month, "Card Expiration" %>
-    <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
-    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
+   <tr><td> <%= label_tag :card_month, "Card Expiration" %></td>
+    <td><%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%></tr></td>
   </div>
   <%end%>
+   </table>
 <div class="terms-check">
    <%=render 'terms_check'%>
   </div>
   <%=check_box_tag 'accept'%>I accept
-  
+ 
   <div id="stripe_error">
   <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
 
-  <div class="actions"><%= f.submit "Submit" %></div>
+  <div class="actions"><%= f.submit "Pay Securely" %></div>
   <% end %>
+</div>
+<div style="float:left;margin-left:20px;">
+ <div class="order-total">Order Total</div>
+<table id="order">
+<tr><a class="item-name" href="#"><%=@product.name%></a></tr>
+<tr><td>No: of Tokens</td><td id="order">0</td></tr>
+<tr><td>Shipping </td><td>0.00</td></tr>
+<tr><td class="total">Tax </td><td class="total"> 0.00</td></tr>
+<tr><td class="total">Total </td><td id="price" class="total">0.00</td></tr>
+</table>
 
+</div>
+<div class="clear"></div>
 <%elsif @product.price > @my_credits.to_f %>
 Pay the difference
    <%=@product.name%>
@@ -118,3 +155,5 @@ Pay the difference
     Buy
 <%end%>
 </p>
+
+</div>

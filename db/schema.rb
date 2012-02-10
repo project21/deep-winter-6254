@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120206011555) do
+ActiveRecord::Schema.define(:version => 20120206070557) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
@@ -22,12 +22,13 @@ ActiveRecord::Schema.define(:version => 20120206011555) do
     t.datetime "updated_at"
     t.string   "image"
     t.string   "winner"
-    t.boolean  "active",           :default => true
+    t.boolean  "active",                                          :default => true
     t.integer  "minimum_price"
     t.text     "features"
-    t.decimal  "price"
     t.string   "email_recepient"
     t.text     "message"
+    t.decimal  "price",            :precision => 10, :scale => 2
+    t.decimal  "regular_price",    :precision => 10, :scale => 2
   end
 
   create_table "tokens", :force => true do |t|

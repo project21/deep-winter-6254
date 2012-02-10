@@ -14,7 +14,7 @@ Buckpile::Application.routes.draw do
   post "products/direct_to_update_address"
   post "products/basic_info"
   put "products/update_basic_info"
-  get "products/invite_people"
+  post "products/invite_people"
   devise_for :users
   resources :products 
   resources :tokens

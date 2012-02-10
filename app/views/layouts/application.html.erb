@@ -5,24 +5,27 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "https://js.stripe.com/v1/","application" %>
   <%= csrf_meta_tags %>
-  
-  
-
+<%= tag :meta, :name =>"stripe-key",:content=>STRIPE_PUBLIC_KEY %>
 </head>
 <body>
-
+<div class="center">
 <% if user_signed_in? %>
  <%=current_user.username%>
   <%= link_to "Sign Out", destroy_user_session_path, :method => :delete ,:class=>"sign-up"%>
 <%else%>
   <span class="sign-up"> <%= link_to "Sign Up", new_user_registration_path %> <%= link_to "Sign In", new_user_session_path %></span>
   <% end %>
-  <%=link_to "Home",:controller=>"/products",:action=>"index"%>
+ <ul class="navi_menu">
+  <li><%=link_to "Home",:controller=>"/products",:action=>"index"%></li>
   
-  <%=link_to "New Items",:controller=>"/products",:action=>"all_new"%>
-  <%=link_to "Recently sold",:controller=>"/products",:action=>"sold"%>
-  <%=link_to "My Buckpile",:controller=>"/products",:action=>"my_account"%>
+  <li><%=link_to "New Items",:controller=>"/products",:action=>"all_new"%></li>
+  <li><%=link_to "Recently sold",:controller=>"/products",:action=>"sold"%></li>
+  <li><%=link_to "My Buckpile",:controller=>"/products",:action=>"my_account"%></li>
+  </ul>
+
+ 
 <%= yield %>
 
+</div>
 </body>
 </html>

@@ -5,16 +5,197 @@
  *= require_self
  *= require_tree . 
 */
-
+html{margin:0;}
+html body{
+margin:0 ;
+padding:0;
+font-family:Impact;
+font-size:13px;
+background:#fff; 
+width:100%;
+height:auto !important;
+min-height:100%;
+height:100% !important;
+margin-bottom:-70px;
+min-width:1024px;
+}
+.center{
+  width:1024px !important;
+ margin:0 auto !important;
+}
+.clear {
+    clear: both;
+}
+.wrapper{
+margin-top:20px;	
+width:97%;
+background:white;/*
+background: -webkit-gradient(radial, left center, 1000, right center, 0, from(#fff), to(#B6AFAF) );  
+background:-moz-radial-gradient( center 500px 45deg,circle cover, #fff 28% , #B6AFAF 100%);
+filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#B6AFAF', endColorstr='#fff');
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#B6AFAF',endColorstr='#fff')";*/
+-moz-border-radius:10px;
+ -webkit-border-radius:10px;
+ border-radius:10px;
+ border:solid #B6AFAF 1px;
+ min-height:250px;
+ 
+}
+ .navi_menu {
+    background: url("nav.png") no-repeat;
+    height: 50px;
+    margin: 0 auto;
+    width: 968px;
+}
+.navi_menu li{float:left;list-style-type:none;padding-top:15px;}
+.navi_menu li a{text-decoration:none;color:white;
+font-size:15px;font-weight:bold;padding:10px;}
 .terms-check{
-	width:500px;
+	width:430px;
 	height:100px;
 	overflow:scroll;
 	font-size:12px;
 	border:solid #808080 1px;
 }
+.container{
+	margin-top:3px;
+	width:978px;
+background:#fff;
+border:solid #dedede 2px;
+min-height:950px;
+-moz-border-radius:8px;
+ -webkit-border-radius:8px;
+ border-radius:8px;
+}
+.container h3{padding:10px;width:960px;background:#dedede;
+margin-top:0px;
+-moz-border-radius:6px;
+ -webkit-border-radius:6px;
+ border-radius:6px;
+}
+.view-container{
+padding:5px;	
+width:1000px;
+background:#fff;
+border:solid #dedede 2px;
+min-height:950px;
+-moz-border-radius:8px;
+ -webkit-border-radius:8px;
+ border-radius:8px;
+}
+.item-box{text-align:center;
+padding:5px;
+margin:4px;	
+float:left;
+background:#F0F2F5;	
+-moz-border-radius:3px;
+ -webkit-border-radius:3px;
+ border-radius:3px;
+ border-left:solid #B6BBC3 1px;
+ border-right:solid #B6BBC3 1px;
+ border-top:solid #B6BBC3 1px;
+ border-bottom:solid #B6BBC3 1px;
+ width:180px;
+ -moz-box-shadow: 0px 4px 1px #F0F2F5;
+-webkit-box-shadow: 0px 4px 1px #F0F2F5;
+box-shadow: 0px 4px 1px #F0F2F5;
+}
+.item-image img{
+width:150px;
+height:100px;
+border:solid #fff 3px;
+}
+
+.view-item-box{text-align:center;
+padding:0px;	
+float:left;
+-moz-border-radius:3px;
+ -webkit-border-radius:3px;
+ border-radius:3px;
+ border-left:solid #B6BBC3 1px;
+ border-right:solid #B6BBC3 1px;
+ border-top:solid #B6BBC3 1px;
+ border-bottom:solid #B6BBC3 1px;
+ width:430px;
+ -moz-box-shadow: 0px 4px 1px #F0F2F5;
+-webkit-box-shadow: 0px 4px 1px #F0F2F5;
+box-shadow: 0px 4px 1px #F0F2F5;
+}
+.view-item-box h3{
+padding:8px;
+background:#F0F2F5;
+margin:0px;
+}
+.view-item-image img{
+width:350px;
+height:200px;
+border:solid #fff 3px;
+margin:4px;
+}
+
+.view-description{
+margin-left:15px;	
+padding:0px;	
+float:left;
+-moz-border-radius:3px;
+ -webkit-border-radius:3px;
+ border-radius:3px;
+ border-left:solid #B6BBC3 1px;
+ border-right:solid #B6BBC3 1px;
+ border-top:solid #B6BBC3 1px;
+ border-bottom:solid #B6BBC3 1px;
+ width:550px;
+ min-height:310px;
+ -moz-box-shadow: 0px 4px 1px #F0F2F5;
+-webkit-box-shadow: 0px 4px 1px #F0F2F5;
+box-shadow: 0px 4px 1px #F0F2F5;
+}
+.view-description h3{
+text-align:center;	
+padding:8px;
+background:#F0F2F5;
+margin:0px;
+}
+.order-total{
+	padding:8px;
+	background:#C5D2E2;
+	width:450px;
+	font-weight:bold;
+	font-size:15px;
+}
+.view-container h2{padding:8px;
+background:#F0F2F5;
+margin:0px;}
+#order tr td{width:230px;font-weight:bold;}
+ tr td.total{border-bottom:solid #dedede 1px;
+	padding-bottom:10px; }
+.payment-border{	
+padding:0px;	
+float:left;
+-moz-border-radius:3px;
+ -webkit-border-radius:3px;
+ border-radius:3px;
+ border-left:solid #B6BBC3 1px;
+ border-right:solid #B6BBC3 1px;
+ border-top:solid #B6BBC3 1px;
+ border-bottom:solid #B6BBC3 1px;
+ width:550px;
+ min-height:310px; 
+}
+.item-name{font-weight:bold;}
+.line{
+border-top:solid #404245 2px;
+width:970px;
+margin-top:20px;
+margin-bottom:20px;
+}
+.payment-form-line{
+border-top:solid #808080 1px;
+width:450px;
+
+}
 #simplemodal-container a.modalCloseImg {
-	background:url(rails.png) no-repeat; /* adjust url as required */
+	background:url(close.png) no-repeat; /* adjust url as required */
 	width:25px;
 	height:29px;
 	display:inline;

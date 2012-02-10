@@ -1,13 +1,17 @@
+ <div class="wrapper"></div>
 <h1>Recently sold Products</h1>
 <p>
 <%@sold.each do |product|%>
   <%=product.name%><br>
-
-   <%=image_tag (product.image_url.to_s )%><br>
+  <%=image_tag (product.image_url.to_s )%><br>
   <%=product.price%><br>
   won by <%=product.winner %>
   spent <%=Token.where(:user_id=>User.find_by_username(product.winner).id,:product_id=>product.id).count%> tokens
-
+  <% if User.find_by_username(product.winner).no_of_winning==1 %>
+      <b> Number of winning:</b> First time
+      <%else%>
+      <b> Number of winning:</b><%=User.find_by_username(product.winner).no_of_winning%> times
+      <%end%>
   <%end%>
 
 </p>

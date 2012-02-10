@@ -1,2 +1,7 @@
-Invitation
-<%=@product.name%>
+
+<%=@message%><br>
+<%=@product.name%><br>
+ <%=image_tag @product.image_url.to_s%><br>
+ <%=number_with_precision(@product.price,:precision=>2)%><br>
+ <%=@product.minimum_price - @product.tokens.count %> tokens to be purchased<br>
+ <a href="http://localhost:3000/products/<%=@product.id%>">Win it for $1.00</a>

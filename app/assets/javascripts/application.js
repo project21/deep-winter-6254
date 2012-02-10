@@ -19,6 +19,16 @@ $(document).ready(function() {
    $(".test").modal();
    $('#test').removeClass('ui-helper-hidden');
 });
+ var quantity= $('#token_buck').val();
+ var price =parseFloat($('#token_buck').val()).toFixed(2);
+ $('table#pay-form tr td').click(function(){
+            if (!$('#token_buck').val()==0) {
+            var price =parseFloat($('#token_buck').val()).toFixed(2);
+            var quantity= $('#token_buck').val();
+            $('td#order').text(quantity);
+             $('td#price').text(price);
+              }
+              });
 (function() {
   var subscription;
   jQuery(function() {
@@ -53,6 +63,7 @@ $(document).ready(function() {
           var quantity= $('#token_buck').val();
                if (quantity > 0 && ($('#accept').is(':checked')) ){
           $('#token_buck').val(quantity*100);
+          
         $('#new_token')[0].submit();}
                else{$('#stripe_error').text("Please  accept the terms and condition before submitting. Quantity has to be atleast 1");
                       $('input[type=submit]').attr('disabled', false);
