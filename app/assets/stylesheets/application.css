@@ -28,12 +28,12 @@ min-width:1024px;
 }
 .wrapper{
 margin-top:20px;	
-width:97%;
-background:white;/*
-background: -webkit-gradient(radial, left center, 1000, right center, 0, from(#fff), to(#B6AFAF) );  
-background:-moz-radial-gradient( center 500px 45deg,circle cover, #fff 28% , #B6AFAF 100%);
-filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#B6AFAF', endColorstr='#fff');
--ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#B6AFAF',endColorstr='#fff')";*/
+width:96%;
+background:white;
+background: -webkit-gradient(linear, 0 20%, 0 100%, from(#Fff), to(#F0F2F5)); 
+background:-moz-linear-gradient(top, #Fff 90%, #dedede 100%);
+filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fff', endColorstr='#F0F2F5'); /* IE6 & i7*/
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fff',endColorstr='#F0F2F5')";
 -moz-border-radius:10px;
  -webkit-border-radius:10px;
  border-radius:10px;
@@ -67,11 +67,15 @@ min-height:950px;
  -webkit-border-radius:8px;
  border-radius:8px;
 }
-.container h3{padding:10px;width:960px;background:#dedede;
+.container h3{padding:10px;width:960px;background:black;
 margin-top:0px;
 -moz-border-radius:6px;
  -webkit-border-radius:6px;
  border-radius:6px;
+ background:-moz-linear-gradient(top, black, #5C5E60, black 40%);
+background: -webkit-gradient(linear, 0 0, 0 50%, from(black ), 
+color-stop(90%,black ),color-stop(50%,#5C5E60));
+color:white;  
 }
 .view-container{
 padding:5px;	
@@ -99,6 +103,11 @@ background:#F0F2F5;
  -moz-box-shadow: 0px 4px 1px #F0F2F5;
 -webkit-box-shadow: 0px 4px 1px #F0F2F5;
 box-shadow: 0px 4px 1px #F0F2F5;
+padding-bottom:15px;
+background: -webkit-gradient(linear, 0 0, 0 100%, from(#F0F2F5), to(#d5d5d5)); 
+background:-moz-linear-gradient(top, #F0F2F5 100%, #d5d5d5 10%);
+filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#F0F2F5', endColorstr='#d5d5d5'); /* IE6 & i7*/
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#F0F2F5',endColorstr='#d5d5d5')";	
 }
 .item-image img{
 width:150px;
@@ -166,9 +175,81 @@ margin:0px;
 .view-container h2{padding:8px;
 background:#F0F2F5;
 margin:0px;}
+.account-box{
+float:left;	
+width:350px;
+height:70px;
+border:solid #fff 3px;
+margin:10px;	
+border:solid #ccc 1px;
+-moz-border-radius:8px;
+ -webkit-border-radius:8px;
+ border-radius:8px;
+ text-align:center;
+ padding-bottom:4px;
+}
+.account-box h3{
+padding:6px;
+background:#F0F2F5;
+margin:0px;	
+
+}
+.my-account-bar{
+	margin:3px;
+	padding:8px;
+	background:#d5d5d5;
+	width:400px;
+	font-weight:bold;
+	font-size:15px;
+	-moz-border-radius:8px;
+ -webkit-border-radius:8px;
+ border-radius:8px;
+}
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+.no-profile-pic img{width:100px;height:100px;float:left;}
+.winner{
+color: #990000;
+font-weight:bold;
+}
+.token-spent{
+color: #E47911;
+font-weight: bold;	
+}
+.no-item{
+padding:8px;
+background:#F3F8FC;
+color:#ABB1B5;
+}
+.notice{
+	padding:9px;
+width:98%;
+background:#C6EFA4;	
+border:solid #7CDD2C 1px;	
+font-weight:bold; 
+moz-border-radius:5px;
+-webkit-border-radius:5px;
+ border-radius:5px;
+}
+.error{
+	padding:9px;
+width:98%;
+background:#F09994;	
+border:solid #ED3126 1px;	
+font-weight:bold;	
+moz-border-radius:5px;
+-webkit-border-radius:5px;
+ border-radius:5px;
+}
+.update-address{
+	 font-weight:bold;
+	 font-size:14px;
+}
 #order tr td{width:230px;font-weight:bold;}
  tr td.total{border-bottom:solid #dedede 1px;
-	padding-bottom:10px; }
+	padding-bottom:10px; background:#ececec;}
 .payment-border{	
 padding:0px;	
 float:left;
@@ -182,12 +263,28 @@ float:left;
  width:550px;
  min-height:310px; 
 }
-.item-name{font-weight:bold;}
+.basic-info-button{margin-bottom:3px;}
+.line-separator{
+border-top:dotted #dedede 1px;
+width:400px;
+margin-top:1px;
+}
+.tokens-alert{color: #009900;font-weight:bold;}
+.item-name{font-weight:bold;
+color:#004B91;
+margin-top:10px;
+margin-bottom:10px;display:inline-block;}
 .line{
 border-top:solid #404245 2px;
 width:970px;
 margin-top:20px;
 margin-bottom:20px;
+}
+.line-update{
+border-top:solid #404245 2px;
+width:970px;
+margin-top:2px;
+margin-bottom:2px;
 }
 .payment-form-line{
 border-top:solid #808080 1px;

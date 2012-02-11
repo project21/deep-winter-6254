@@ -2,7 +2,7 @@
 <div class="view-container">
 <h2> Game ID:<%=@product.id%></h2>
 <% if flash[:notice]%>
-  <div class="note"> <%=flash[:notice]%></div>
+  <div id="flash_notice"> <%=flash[:notice]%></div>
      <%end%>
 <p>
 <div class="view-item-box">
@@ -89,7 +89,7 @@ Win it for $<%=number_with_precision(@product.price,:precision=>2)%><br>
 <table id="order">
 <tr><a class="item-name" href="#"><%=@product.name%></a></tr>
 <tr><td>No: of Tokens</td><td id="order">0</td></tr>
-<tr><td>Shipping </td><td>0.00</td></tr>
+<tr><td>Shipping & Handling</td><td>0.00</td></tr>
 <tr><td class="total">Tax </td><td class="total"> 0.00</td></tr>
 <tr><td class="total">Total </td><td id="price" class="total">0.00</td></tr>
 </table>

@@ -7,9 +7,9 @@
 <p>
 <%@products.each do |product|%>
 <div class="item-box">
-  <a href="/products/<%=product.id%>"><%=product.name%></a><br>
+  <a class="item-name" href="/products/<%=product.id%>"><%=product.name%></a><br>
   <span class="item-image"> <%=image_tag (product.image_url.to_s )%></span><br>
-  <%=product.minimum_price - product.tokens.count %> tokens to be purchased<br>
+  <span class="tokens-alert"><%=product.minimum_price - product.tokens.count %> tokens to be purchased</span><br>
   Get it for a $<%=number_with_precision(product.price,:precision=>2)%><br>
   </div>
   <%end%>

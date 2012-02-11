@@ -1,45 +1,54 @@
+ <div class="view-container">
  <% if flash[:notice]%>
-  <div class="note"> <%=flash[:notice]%></div>
+  <div class="notice"> <%=flash[:notice]%></div>
      <%end%>
      <div>
      <% if current_user.address.nil? %>
-      Please update your address  <%=button_to "Update Address",:controller=>"products",:action=>"direct_to_update_address"%>
+      <div class="error">Please update your address  <%=link_to "Update Address",:controller=>"products",:action=>"shipping_address" %></div>
      <%end%>
      </div>
-     <%=button_to "Edit Basic Info",:controller=>"products",:action=>"basic_info"%>
-    
-<p>
-$<%=@my_credits%>Total credits
+    <b> Hi, <%=current_user.username%></b>
+  <div class="no-profile-pic"><%=image_tag("no_profile_picture.jpg")%></div>
+<div class="account-box">
+<h3>You have $<%=@my_credits%> Total credits</h3>
 Want to use your credits?<%=link_to "Buy Now",:controller=>"products",:action=>"buy_now"%>
-Ongoing Games<br>
+</div>
+
+<div class="account-box">
+<h3>Personal Information</h3>
+Edit/update your Information <%=button_to "Edit Basic Info",:controller=>"products",:action=>"basic_info",:class=>"basic-info-button"%>
+</div>
+ 
+<div class="clear"></div>
+
+<div style="float:left;width:400px;margin-top:10px;">
+<div class="my-account-bar">Current Games</div>
 <%unless @my_games.empty?%>
       
 <% @my_games.each do |game| %>
   <% unless @id_values==game.product.id%>
     <% if game.product.active && game.product.price ==1.0 %>
     <%@id_values=game.product.id%>
-   <%=game.product.name %><br>
+   <a class="item-name" href="/products/<%=game.product.id%>"><%=game.product.name %></a><br>
     <%=image_tag (game.product.image_url.to_s )%><br>
-   <%=game.product.price %><br>
-   <%=game.product.description %><br>
    
-   <%=game.product.minimum_price - game.product.tokens.count %> tokens has to be purchased for the game to start<br>
-    Your tokens:<br>
+  <span class="tokens-alert"> <%=game.product.minimum_price - game.product.tokens.count %> tokens has to be purchased for the game to start</span><br>
+   <b> Your tokens:</b><br>
      <%=game.unique_token %><br>
       <div  class="test ui-helper-hidden"><%=game.product.name%></div>
      <div id="test2">Invite A Friend</div>
+     <div class="line-separator"></div>
        <%end%>
-     
-   <%end%>
+     <%end%>
     
   <%end%> 
   <%else%> 
-   Currently you are not participating in any game  <br>
+   <span class="no-item">Currently you are not participating in any game </span> <br>
  <%end%> 
- 
+ </div>
 
-
-previously participated lottery<br>
+ <div style="float:left;width:400px;margin-top:10px;margin-left:25px;">
+<div class="my-account-bar">Previously Participated Games</div>
 
 <%unless @my_games.empty?%>
 
@@ -49,12 +58,11 @@ previously participated lottery<br>
          <% unless game.product.active  %>
            <%if  game.product.price == 1.0 %>
            <%@id_value=game.product.id%>
-           <%=game.product.name %>
+          <b> <%=game.product.name %></b><br>
            <%=image_tag (game.product.image_url.to_s )%><br>
-           <%=game.product.price %><br>
-           <%=game.product.description %><br>
-           winner was <%=game.product.winner%><br>
-            spent <%=Token.where(:user_id=>User.find_by_username(game.product.winner).id,:product_id=>game.product.id).count%> tokens
+          <b>winner was</b><span class="winner"> <%=game.product.winner%></span><br>
+         <span class="token-spent">spent <%=Token.where(:user_id=>User.find_by_username(game.product.winner).id,:product_id=>game.product.id).count%> tokens</span><br>
+               <div class="line-separator"></div>
               <%end%>
          <%else%>
           <!--You dont have any previous Games-->
@@ -62,7 +70,9 @@ previously participated lottery<br>
     <%end%>
   <%end%>
 <%else%>
-   You dont have any previous Games
+  <span class="no-item"> You dont have any previous Games</span>
 
 <%end%>
-</p>
+</div>
+
+</div>
