@@ -9,17 +9,22 @@
 </head>
 <body>
 <div class="center">
+<span class="logo"><%=image_tag('Buckpile - 4.PNG')%></span>
+
 <% if user_signed_in? %>
- <%=current_user.username%>
+ <span class="signed-in" ><%=current_user.username%>. Not you? 
   <%= link_to "Sign Out", destroy_user_session_path, :method => :delete ,:class=>"sign-up"%>
+  </span>
 <%else%>
   <span class="sign-up"> <%= link_to "Sign Up", new_user_registration_path %> <%= link_to "Sign In", new_user_session_path %></span>
   <% end %>
+  <div class="clear"></div>
  <ul class="navi_menu">
   <li><%=link_to "Home",:controller=>"/products",:action=>"index"%></li>
   
-  <li><%=link_to "New Items",:controller=>"/products",:action=>"all_new"%></li>
-  <li><%=link_to "Recently sold",:controller=>"/products",:action=>"sold"%></li>
+  <li><%=link_to "New Added Items",:controller=>"/products",:action=>"all_new"%></li>
+  <li><%=link_to "Recently Sold",:controller=>"/products",:action=>"sold"%></li>
+  <li><%=link_to "How It Works",:controller=>"/products",:action=>"sold"%></li>
   <li><%=link_to "My Buckpile",:controller=>"/products",:action=>"my_account"%></li>
   </ul>
 

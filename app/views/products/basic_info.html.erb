@@ -1,17 +1,24 @@
+<div class="view-container">
+
 <%= form_for @user ,:url=>{:action =>"update_basic_info"} do |f|%>
 <% if @user.errors.any?%>
 <% @user.errors.full_messages.each do |error| %>
     <%= error %>
     <% end %>
 <%end%>
-<%=f.text_field :username %>
-<%=f.text_field :email %>
+<div style="font-weight:bold;font-size:18px;margin-left:160px;margin-top:30px;">Personal Information</div>
+<div class="line-update"></div>
+<table style="margin-left:160px;margin-top:20px;">
+<tr><td>Username</td><td><%=f.text_field :username %></td></tr>
+<tr><td>Email</td><td><%=f.text_field :email %></td></tr>
 
-Address Line 1 <%=f.text_field :address %>
- Address Line 2 <%=f.text_field :address2 %>
-City <%=f.text_field :city %>
- State<%=f.text_field :state %>
- Zipcode<%=f.text_field :zipcode %>
- <%=f.submit "Update" %>
+<tr><td>Address Line 1 </td><td><%=f.text_field :address %></td></tr>
+ <tr><td>Address Line 2</td><td> <%=f.text_field :address2 %></td></tr>
+<tr><td>City</td><td> <%=f.text_field :city %></td></tr>
+<tr><td> State</td><td><%=f.text_field :state ,:size=>"3" %></td></tr>
+ <tr><td>Zipcode</td><td><%=f.text_field :zipcode,:size=>"10" %></td></tr>
+ <tr><td><%=f.submit "Update" %></td></tr>
 <%end%>
+</table>
 </p>
+</div>

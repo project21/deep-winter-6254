@@ -8,7 +8,7 @@
     <%= error %>
   <% end %>
 <%end%>
-<table>
+<table style="margin-left:160px;margin-top:20px;">
 <tr><td>Address Line 1</td><td> <%=f.text_field :address %></td></tr>
  <tr><td>Address Line 2 </td><td><%=f.text_field :address2 %></td></tr>
 <tr><td>City </td><td><%=f.text_field :city %></td></tr>
@@ -18,5 +18,5 @@
  </table>
 <%end%>
 </p>
-<%=button_to "Ask me later",:controller=>"products",:action=>"skip"%>
+<div style="margin-left:480px;"><%=button_to "Ask me later",:controller=>"products",:action=>"skip"%></div>
 </div>

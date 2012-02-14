@@ -1,6 +1,23 @@
-<%=@product.name%>
+<h3>Invite A Friend</h3>
+
+<span class="item-image" style="float:left;margin:15px;display:block;background:#dedede;padding:15px;">
+<%=image_tag (@product.image_url.to_s )%></span>
+
+<span style="background:#dedede;padding:15px;display:block;width:500px;margin:15px;height:140px;
+-moz-border-radius:6px;
+ -webkit-border-radius:6px;
+ border-radius:6px;	
+ ">
+
+<a class="item-name" href="#"><%=@product.name%></a><br>
+<span>Win it for $1.00</span><br>
+<span class="tokens-alert"><%=@product.minimum_price - @product.tokens.count %> tokens to be purchased for the game to start</span></span>
+<div class="clear"></div>
+<div style="font-weight:bold;text-decoration:underline;">Send it to your friend</div>
  <%= form_for @invite ,:url=>{:controller=>"products",:action =>"invite_people"} do |f| %>
-          To:Recepient Email <%= f.text_field :email_recepient %><br>
-           Message<%= f.text_area :message,:rows=>"3" %>
-           <%=f.submit "send"%>
+ <table style='font-weight:bold;'>
+         <tr><td> Recipient Email:*</td><td> <%= f.text_field :email_recepient %></td></tr>
+           <tr><td> Message:<span style="color:#808080;">(optional)</span></td><td><%= f.text_area :message,:rows=>"3" %></td></tr>
+           <tr><td><%=f.submit "send"%></td></tr>
            <%end%>
+           </table>

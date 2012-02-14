@@ -19,6 +19,7 @@ $(document).ready(function() {
    $(".test").modal();
    $('#test').removeClass('ui-helper-hidden');
 });
+$('input.amount').attr("disabled","disabled");
  var quantity= $('#token_buck').val();
  var price =parseFloat($('#token_buck').val()).toFixed(2);
  $('table#pay-form tr td').click(function(){
