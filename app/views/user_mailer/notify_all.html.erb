@@ -1,5 +1,4 @@
-
-<%=@message%><br>
+<b>Winner for </b><br/>
 <span class="item-image" style="float:left;margin:15px;display:block;background:#dedede;padding:15px;">
 <%=image_tag (@product.image_url.to_s )%></span>
 
@@ -8,8 +7,6 @@
  -webkit-border-radius:6px;
  border-radius:6px;	
  ">
-
 <a class="item-name" href="#"><%=@product.name%></a><br>
-<span><a href="http://localhost:3000/products/<%=@product.id%>">Win it for $1.00</a></span><br>
-<span class="tokens-alert"><%=@product.minimum_price - @product.tokens.count %> tokens to be purchased for the game to start</span></span>
- 
+</span><br>
+is <span style="color:red;"><%=@product.winner%></span>

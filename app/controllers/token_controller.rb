@@ -13,11 +13,14 @@ class TokenController < ApplicationController
      unless session[:product_id].nil? || session[:product_id].blank? 
        if @token.save_with_payment(@quantity)
        @product=Product.find(session[:product_id])
+       Player.create(:email=>current_user.email,:product_id=>@product.id)
        @current_tokens=@product.tokens.count 
         if @current_tokens >= @product.minimum_price
         @winner_token=@product.tokens.sample.unique_token
         @winner=Token.find_by_unique_token(@winner_token).user.username
         @product.update_attribute(:winner,@winner)
+        UserMailer.notify_all(@product.players.map{|f| f.email,@product}).deliver
+        UserMailer.notify_winner(User.find_by_username(@winner)).deliver
         Token.find_by_unique_token(@winner_token).update_attribute(:used,true)
         User.increment_counter(:no_of_winning, Token.find_by_unique_token(@winner_token).user.id)
         @product.update_attribute(:active,false)

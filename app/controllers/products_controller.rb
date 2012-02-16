@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
      @price=@product.minimum_price 
      @user_credits=current_user.tokens.where(:used=>false).count 
      @amount_difference=(@price - @user_credits ).to_f
+     
   end
 
   def new
@@ -61,13 +62,14 @@ def my_account
 end
 
 def invite_people
+  @user=current_user
   @email=Product.new(:email_recepient=>params[:product][:email_recepient])
  @email_recepient=@email.email_recepient.to_s
   @message=Product.new(:message=>params[:product][:message])
   @email_message=@message.message.to_s
   @product=Product.find(session[:product_id])
-  UserMailer.invite(@product,@email_recepient,@email_message).deliver
-   redirect_to :back
+  UserMailer.invite(@product,@email_recepient,@email_message,@user).deliver
+  redirect_to :back
 end
 
 def buy_now

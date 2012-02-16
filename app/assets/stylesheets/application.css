@@ -51,7 +51,7 @@ font-size:15px;font-weight:bold;padding:10px;}
 .terms-check{
 	width:430px;
 	height:70px;
-	overflow:scroll;
+	overflow:auto;
 	font-size:12px;
 	border:solid #808080 1px;
 }
@@ -276,7 +276,7 @@ text-align:center;
  border-radius:10px;
 }
 .logo img{
-	width:300px;
+	width:250px;
 	height:90px;
 }
 .notice{

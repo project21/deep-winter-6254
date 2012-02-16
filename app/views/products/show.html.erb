@@ -99,7 +99,8 @@ Win it for $<%=number_with_precision(@product.price,:precision=>2)%><br>
 <div class="clear"></div>
 <div class="cards"><%=image_tag('visa.jpg')%><%=image_tag('mastercard.jpg')%><%=image_tag('amex.jpg')%><%=image_tag('discover.jpg')%></div>
 
-<%elsif @product.price > @my_credits.to_f %>
+<%elsif @product.price > @user_credits.to_f %>
+
 <div class="clear"></div>
 <div class="error">You dont have sufficient credits, Please pay the difference amount.  </div>
 <p>
@@ -110,10 +111,10 @@ Win it for $<%=number_with_precision(@product.price,:precision=>2)%><br>
    
 
     <div class="view-description">
-<h3>Product Details</h3>
-<span><b>Retail Price:</b>$350</span>
-<span><b>Condition:</b>New</span>
-<span><b>Item Description:</b><%=@product.description%></span>
+    <h3>Product Details</h3>
+    <span><b>Retail Price:</b>$350</span>
+    <span><b>Condition:</b>New</span>
+    <span><b>Item Description:</b><%=@product.description%></span>
 <span><b>Features:</b><%=simple_format(@product.features,:sanitize=>false)%></span>
 <span><b>Shipping:</b>FREE</span>
 <span><b>Return Policy:</b>If you dont win ,your money will be accredited back in your buckpile account as an online currency.Purchased Tokens wont be refunded </span>
@@ -183,9 +184,9 @@ Win it for $<%=number_with_precision(@product.price,:precision=>2)%><br>
  
   </div>
   <div style="float:left;margin-left:20px;">
- <div class="order-total">Order Total<span class="cart"><%=image_tag('cart.png')%></span></div>
-<table id="order">
-<tr><td><a class="item-name" href="#"><%=@product.name%></td><td>$<%=number_with_precision(@amount_difference,:precision=>2)%></td></a></tr>
+  <div class="order-total">Order Total<span class="cart"><%=image_tag('cart.png')%></span></div>
+  <table id="order">
+  <tr><td><a class="item-name" href="#"><%=@product.name%></td><td>$<%=number_with_precision(@amount_difference,:precision=>2)%></td></a></tr>
 <tr><td>Quantity</td><td>1</td></tr>
 <tr><td>Shipping & Handling</td><td>$0.00</td></tr>
 <tr><td >Tax </td><td> $0.00</td></tr>

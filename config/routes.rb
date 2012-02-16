@@ -8,6 +8,7 @@ Buckpile::Application.routes.draw do
   get "products/all_new"
   get "products/my_account"
   get "products/buy_now"
+   get "products/buy"
   get "products/shipping_address"
   put "products/update_address"
   post "products/skip"

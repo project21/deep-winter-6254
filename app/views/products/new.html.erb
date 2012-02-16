@@ -1,9 +1,9 @@
-For regular price make sure you convert to cent,*100
+<h2>Administration</h2>
 <%= form_for @product ,:url=>{:controller=>"products",:action=>"create"},:html=>{:multipart=>true} do |f|%>
 <span >Name*</span><br><%= f.text_field :name,:size=>"30",:class=>"fields" %><br />
 
-<span >price per person*</span>  <br><%= f.text_field :price,:size=>"30" ,:class=>"fields"%><br />
-<span >Set price*</span>  <br><%= f.text_field :minimum_price,:size=>"30" ,:class=>"fields"%><br />
+<span >Price*</span>  <br><%= f.text_field :price,:size=>"30" ,:class=>"fields"%><br />
+<span >Set max price*</span>  <br><%= f.text_field :minimum_price,:size=>"30" ,:class=>"fields"%><br />
 <span >Features*</span>  <br><%= f.text_area :features,:cols=>"50",:class=>"fields",:rows=>"3" %><br />
 <span >Description*</span> <br><%= f.text_area :description,:cols=>"50",:class=>"fields",:rows=>"3" %><br />
 <label>Item Image</label><%=f.file_field :image %><br/>
