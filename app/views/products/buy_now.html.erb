@@ -4,7 +4,7 @@
 <div class="item-box">
   <a class="item-name" href="/products/<%=product.id%>"><%=product.name%></a><br>
   <span class="item-image"> <%=image_tag (product.image_url.to_s )%></span><br>
-  <span style="font-weight:bold;font-size:13px;"><%=product.minimum_price %> Credits</span><br>
+  <span style="font-weight:bold;font-size:13px;">$<%=product.minimum_price %> Credits</span><br>
   <a class="item-name" href="/products/<%=product.id%>">Redeem</a>
   </div>
   <%end%>
