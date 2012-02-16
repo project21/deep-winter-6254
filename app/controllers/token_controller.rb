@@ -19,7 +19,8 @@ class TokenController < ApplicationController
         @winner_token=@product.tokens.sample.unique_token
         @winner=Token.find_by_unique_token(@winner_token).user.username
         @product.update_attribute(:winner,@winner)
-        UserMailer.notify_all(@product.players.map{|f| f.email,@product}).deliver
+        @players=@product.players.map{|f| f.email,@product}
+        UserMailer.notify_all(@players).deliver
         UserMailer.notify_winner(User.find_by_username(@winner)).deliver
         Token.find_by_unique_token(@winner_token).update_attribute(:used,true)
         User.increment_counter(:no_of_winning, Token.find_by_unique_token(@winner_token).user.id)
